@@ -6,25 +6,43 @@
    "fieldname": "quotation",
    "fieldtype": "Data",
    "label": "Quotation",
-   "width": 0
+   "width": 200
   },
   {
    "fieldname": "customer",
    "fieldtype": "Date",
    "label": "Customer",
-   "width": 0
+   "width": 200
   },
   {
    "fieldname": "inspection_date",
    "fieldtype": "Date",
    "label": "Inspection Date",
-   "width": 0
+   "width": 150
   },
   {
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
-   "width": 0
+   "width": 150
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Data",
+   "label": "Item",
+   "width": 200
+  },
+  {
+   "fieldname": "inspection_rating",
+   "fieldtype": "Data",
+   "label": "Inspection Rating",
+   "width": 150
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Data",
+   "label": "Comments",
+   "width": 150
   }
  ],
  "creation": "2025-07-02 14:38:31.068343",
@@ -36,13 +54,13 @@
  "is_standard": "Yes",
  "letter_head": "test letter head",
  "letterhead": null,
- "modified": "2025-07-02 15:15:46.149248",
+ "modified": "2025-07-02 16:33:03.294101",
  "modified_by": "Administrator",
  "module": "Site Inspection",
  "name": "Site Inspection",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT\n    SI.quotation,\n    SI.customer,\n    SI.inspection_date,\n    SI.status\nFROM\n    `tabSite Inspection` AS SI\n\n    ",
+ "query": "SELECT\n\n    SI.quotation AS quotation,\n    SI.customer AS customer,\n    SI.inspection_date AS inspection_date,\n    SI.status AS status,\n    IFB.item AS item,\n    IFB.inspection_rating AS inspection_rating,\n    IFB.comments AS comments\nFROM\n    `tabSite Inspection` AS SI\nLEFT JOIN\n    `tabInspection Feedback` AS IFB\n    ON IFB.parent = SI.name\n\n\n\n\n    ",
  "ref_doctype": "Site Inspection",
  "report_name": "Site Inspection",
  "report_type": "Query Report",

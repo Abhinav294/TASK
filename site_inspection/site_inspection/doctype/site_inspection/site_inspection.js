@@ -2,39 +2,44 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Site Inspection", {
-    quotation: function(frm) {
-        if (!frm.doc.quotation) return;
-        frappe.call({
-            method: "frappe.client.get",
-            args: {
-                doctype: "Quotation",
-                name: frm.doc.quotation
-            },
-            callback: function(r) {
-                if (r.message) {
-                    let quotation = r.message;
+    // quotation: function(frm) {
+    //     if (!frm.doc.quotation) return;
+    //     frappe.call({
+    //         method: "frappe.client.get",
+    //         args: {
+    //             doctype: "Quotation",
+    //             name: frm.doc.quotation
+    //         },
+    //         callback: function(r) {
+    //             if (r.message) {
+    //                 let quotation = r.message;
+    //                 frm.clear_table("inspection_feedback");
+    //                 (quotation.items || []).forEach(function(row) {
+    //                     let item = frm.add_child("inspection_feedback");
+    //                     item.item = row.item_code;
+    //                 });
+    //                 frm.refresh_field("inspection_feedback");
+    //             }
+    //         }
+    //     });
+    // },
+   
+        quotation: function(frm) {
+            if (!frm.doc.quotation) return;
+
+            frappe.db.get_doc("Quotation", frm.doc.quotation)
+                .then(quotation => {
                     frm.clear_table("inspection_feedback");
-                    (quotation.items || []).forEach(function(row) {
-                        let item = frm.add_child("inspection_feedback");
-                        item.item = row.item_code;
+
+                    (quotation.items || []).forEach(item_row => {
+                        let row = frm.add_child("inspection_feedback");
+                        row.item = item_row.item_code;
                     });
+
                     frm.refresh_field("inspection_feedback");
-                }
-            }
-        });
-    },
-
-
-    
-
-
-
-
-
-
-
-
-
+                });
+        },
+  
 
 
 
@@ -47,12 +52,6 @@ frappe.ui.form.on("Site Inspection", {
     },
 
 
-
-
-
-
-  
-    
 
 
 
