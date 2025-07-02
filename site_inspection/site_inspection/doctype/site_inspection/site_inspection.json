@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "SI.#####",
+ "creation": "2025-07-02 11:43:24.105814",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_iifa",
+  "amended_from",
+  "quotation",
+  "customer",
+  "inspection_date",
+  "status",
+  "inspection_notes",
+  "create_follow_up_task",
+  "inspection_feedback"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_iifa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Site Inspection",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Quotation ",
+   "options": "Quotation",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "quotation.customer_name",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer ",
+   "options": "Customer"
+  },
+  {
+   "default": "now",
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nUnder Review\nCompleted"
+  },
+  {
+   "fieldname": "inspection_notes",
+   "fieldtype": "Text",
+   "label": "Inspection Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "create_follow_up_task",
+   "fieldtype": "Check",
+   "label": "Create Follow up Task "
+  },
+  {
+   "fieldname": "inspection_feedback",
+   "fieldtype": "Table",
+   "label": "Inspection Feedback",
+   "options": "Inspection Feedback"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-07-02 14:43:11.711832",
+ "modified_by": "Administrator",
+ "module": "Site Inspection",
+ "name": "Site Inspection",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
